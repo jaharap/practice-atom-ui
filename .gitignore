@@ -1,0 +1,10 @@
+.idea/
+node_modules/
+typings/
+dist/
+app/*.js
+app/*.map
+app/**/*.js
+app/**/*.map
+npm-debug.log
+atom-config.js*

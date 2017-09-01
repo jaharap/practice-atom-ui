@@ -1,0 +1,22 @@
+<div>
+
+    <form>
+        <div class="form-group">
+            <label for="email1">Email address</label>
+            <input type="email"
+                   class="form-control"
+                   name="username"
+                   id="email1"
+
+                   placeholder="Enter email"
+                   [(ngModel)]="username"
+            >
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password</label>
+            <input type="password" name="password" class="form-control" id="pwd" placeholder="Password" [(ngModel)]="password">
+        </div>
+        <div>{{loginMessage}}</div>
+        <button type="submit" class="btn btn-primary {{btnActive ? '' : 'disabled'}}" (click)="loginClick()">Submit</button>
+    </form>
+</div>
