@@ -104,9 +104,8 @@ ApiService {
         return new Promise((resolve, reject)=>{
 
             var url = this.apiUrl + "/users";
-        //    let options = "";
-        //    let headers = new Headers({Authorization: "Token " + this.getToken()});
-//            let options = new RequestOptions({headers: headers});
+            let headers = new Headers({Authorization: "Token " + this.myToken});
+            let options = new RequestOptions({headers: headers});
 
             var body = {
                 username: user.username,
@@ -115,7 +114,7 @@ ApiService {
                 uRoleId: user.role
             }
 
-       /*     this.http.post(url, body, options)
+            this.http.post(url, body, options)
                 .toPromise()
                 .then(response=>{
                     console.log("In API service create success", body);
@@ -124,7 +123,7 @@ ApiService {
                 .catch(error =>{
                     console.log("in api servuce create error");
                     reject(error.json());
-                }); */
+                });
 
             console.log("In API servi", body);
 

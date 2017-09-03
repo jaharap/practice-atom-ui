@@ -84,20 +84,20 @@ export class UserComponent {
 
         console.log("User data: ", newUserObject);
 
-      /*  this.apiService.createUser(newUserObject)
+        this.apiService.createUser(newUserObject)
             .then(response =>{
                 console.log("New user created successfully.");
                this.userCreateMessage = "New user created successfully";
-               // this.loadData();
+                this.loadData();
             })
             .catch(error =>{
                 console.log("Could not create new User");
                 this.userCreateMessage = "Could not create user, please try again.";
              });
-             */
+
 
         this.enableCreateSaveButton = false;
-        this.showCreateUserModal = false;
+      //  this.showCreateUserModal = false;
 
 
     }
