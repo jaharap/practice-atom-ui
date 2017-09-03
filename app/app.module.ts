@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {Http, HttpModule} from "@angular/http";
 import {ApiService} from "./common/api-service";
 import {UserComponent} from "./components/user";
+import {Session} from "./common/session";
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import {UserComponent} from "./components/user";
         AppComponent
     ],
     providers: [
-        ApiService
+        ApiService, Session
     ],
     bootstrap:    [
         AppComponent

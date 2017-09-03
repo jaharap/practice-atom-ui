@@ -20,6 +20,7 @@ export class UserComponent {
     selectedRole = null;
     userCreateMessage:string = "";
     enableCreateSaveButton: boolean = false;
+    showCreateUserModal:boolean = false;
 
 
     constructor(
@@ -55,8 +56,10 @@ export class UserComponent {
         this.email = null;
         this.role = "";
         this.selectedRole = 1;
+        this.showCreateUserModal = true;
         this.enableCreateSaveButton = true;
     }
+
     saveNewUser = function(){
         this.userCreateMessage = "";
         if(!this.username || !this.email) {
@@ -94,6 +97,7 @@ export class UserComponent {
              */
 
         this.enableCreateSaveButton = false;
+        this.showCreateUserModal = false;
 
 
     }
