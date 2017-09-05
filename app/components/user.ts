@@ -122,7 +122,33 @@ export class UserComponent {
     }
     editSaveUser = function(){
         this.editUserModal = "";
-        this.showEditsaveButton = false;
+
+        var updatedUser = {
+            email: this.currentlyEditingEmail,
+            role: parseInt(this.currentlyEditingRole)
+        }
+
+        if(!this.currentlyEditingEmail) {
+            this.editUserModal = "Please enter email."
+            return;
+        }
+        if(!this.currentlyEditingRole){
+            this.editUserModal = "";
+            return;
+        }
+        if(!this.editPassword1 || !this.editPassword2){
+            this.editUserModal = "Please enter password";
+        }else if(this.editPassword1 != this.editPassword2){
+            this.editUserModal = "Passwords do not match";
+            return;
+        }
+
+        updatedUser['passwprd'] = this.editPassword2;
+
+        console.log("Updated User :", updatedUser);
+
+
+        this.showEditSaveButton = false;
     }
 
 
