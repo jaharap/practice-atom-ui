@@ -20,9 +20,56 @@
             <td>{{user.username}}</td>
             <td>{{user.email}}</td>
             <td>{{user.role}}</td>
+            <td><button class="btn btn-primary"
+                        (click)="editUser(user)"
+                        data-toggle="modal"
+                        data-target="#editUserModal"
+            >Edit</button></td>
         </tr>
     </div>
 
+    <div id="editUserModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> <i class="fa fa-times-circle delete-button text-bold" aria-hidden="true"></i>
+                    </button>
+                    <h4 class="modal-title">Edit User <strong>{{currentlyEditingUsername}}</strong></h4>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="editEmail">Email</label>
+                            <input id="editEmail" name="editusername" type="text" [(ngModel)]="currentlyEditingEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="editRole">Role</label>
+                            <select id="editRole" name="editRole" type="text" [(ngModel)]="currentlyEditingRole">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPassword1">Password</label>
+                            <input id="editPassword1" name="editPassword1" type="text" [(ngModel)]="editPassword1">
+                        </div>
+                        <div class="form-group">
+                            <label for="editPassword2">Confirm Password</label>
+                            <input id="editPassword2" name="editPassword2" type="text" [(ngModel)]="editPassword2">
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary" (click)="editSaveUser()" *ngIf="showEditSaveButton">Save</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <div id="newUserModal" class="modal fade" role="dialog">
         <div class="modal-dialog">

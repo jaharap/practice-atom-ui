@@ -22,6 +22,16 @@ export class UserComponent {
     enableCreateSaveButton: boolean = false;
     showCreateUserModal:boolean = false;
 
+    showEditSaveButton:boolean = false;
+    currentlyEditingUsername:string = null;
+    currentlyEditingId:number = -1;
+    currentlyEditingEmail:string = null;
+    editPassword1:string = "";
+    editPassword2:string = "";
+    currentlyEditingRole:string = "";
+    editUserModal:boolean = false;
+
+
 
     constructor(
         private apiService: ApiService
@@ -100,6 +110,19 @@ export class UserComponent {
       //  this.showCreateUserModal = false;
 
 
+    }
+
+    editUser = function(user){
+        this.editUserModal = "";
+        this.currentlyEditingId = user.id;
+        this.currentlyEditingUsername = user.username;
+        this.currentlyEditingEmail = user.email;
+        this.currentlyEditingRole = user.role;
+        this.showEditSaveButton = true;
+    }
+    editSaveUser = function(){
+        this.editUserModal = "";
+        this.showEditsaveButton = false;
     }
 
 
