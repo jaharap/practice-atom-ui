@@ -136,14 +136,33 @@ export class UserComponent {
             this.editUserModal = "";
             return;
         }
-        if(!this.editPassword1 || !this.editPassword2){
-            this.editUserModal = "Please enter password";
-        }else if(this.editPassword1 != this.editPassword2){
-            this.editUserModal = "Passwords do not match";
-            return;
+        if(this.editPassword1 || this.editPassword2) {
+            if (!this.editPassword1) {
+                this.editUserModal = "Please enter password";
+                return;
+            }
+
+            if (!this.editPassword2) {
+                this.editUserModal = "Please confirm password";
+                return;
+            }
+            if (this.editPassword1 != this.editPassword2) {
+                this.editUserModal = "Passwords do not match";
+                return;
+            }
+            updatedUser['password'] = this.editPassword2;
         }
 
-        updatedUser['passwprd'] = this.editPassword2;
+    this.editUserModal = "Please wait while your changes are updated.";
+        this.apiService.updateUser(this.currentlyEditingId, updatedUser)
+            .then(response =>{
+                console.log("In edituser handler success");
+                this.editUserModal = "User has been updated successfully.";
+            })
+            .catch(error=>{
+                console.log("In edit user handler catch.");
+                this.editUserModal = "Sorry, user could not be updated. Please try again.";
+            });
 
         console.log("Updated User :", updatedUser);
 

@@ -130,6 +130,37 @@ ApiService {
         });
 
 
+    }
+    updateUser(id:number, user:any):Promise<any[]>{
+
+        return new Promise((resolve, reject) =>{
+
+            var url = this.apiUrl + "/users/" + id;
+            var headers = new Headers({ Authorization: "Token " + this.myToken});
+            var options = new RequestOptions({headers: headers});
+            var body = {
+                newEmail : user.email,
+                newRoleId: user.role
+            };
+            if(user.password)
+                body['newPassword'] = user.password;
+
+            console.log("From apiService update user ", body);
+
+            this.http.patch(url, body, options)
+                .toPromise()
+                .then(response =>{
+                    console.log("In apiservice updateUser response", response);
+                    resolve({});
+                })
+                .catch(error =>{
+                    console.log("In apiservice catch");
+                    reject("in apiservice reject");
+                });
+
+            resolve({});
+
+        });
 
     }
 
