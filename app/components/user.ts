@@ -158,6 +158,7 @@ export class UserComponent {
             .then(response =>{
                 console.log("In edituser handler success");
                 this.editUserModal = "User has been updated successfully.";
+                this.loadData();
             })
             .catch(error=>{
                 console.log("In edit user handler catch.");
