@@ -25,7 +25,30 @@
                         data-toggle="modal"
                         data-target="#editUserModal"
             >Edit</button></td>
+            <td><button class="btn btn-primary"
+                        (click)="onDeleteUser(i)"
+                        data-toggle="modal"
+                        data-target="#deleteUserModal"
+            >Delete</button></td>
         </tr>
+    </div>
+
+    <div id="deleteUserModal" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4>Delete user</h4>
+                    <form action="">
+                        <h4>Are you sure you want to delete user {{userToDelete.username}} {{userToDelete.email}}</h4>
+                        <div>
+                            <button class="btn btn-danger">yes</button>
+                            <button class="btn btn-primary">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="editUserModal" class="modal fade" role="dialog">
