@@ -31,6 +31,9 @@ export class UserComponent {
     currentlyEditingRole:string = "";
     editUserModal:boolean = false;
 
+    userToDelete:any = null;
+    showDeleteButton:boolean = true;
+    deleteModalMessage = "";
 
 
     constructor(
@@ -171,6 +174,13 @@ export class UserComponent {
         this.showEditSaveButton = false;
     }
 
+    onDeleteUser(index:number):void{
+
+        this.userToDelete = this.users[index];
+        this.showDeleteButton = true;
+        this.deleteModalMessage = "";
+        console.log("In delete user", this.userToDelete);
+    }
 
 
 
