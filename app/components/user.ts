@@ -181,6 +181,23 @@ export class UserComponent {
         this.deleteModalMessage = "";
         console.log("In delete user", this.userToDelete);
     }
+    onDeleteConfirm():void{
+
+        console.log("In on delete confirm: ");
+        this.deleteModalMessage = "Please wait while deleting the user";
+
+
+        this.apiService.deleteUsers(this.userToDelete.id)
+            .then(function(){
+                this.deleteModalMessage = "User has been deleted.";
+                this.showDeleteButton = false;
+                this.loadData();
+            })
+            .catch(error =>{
+                this.deleteModalMessage = "User could not be deleted";
+            });
+
+    }
 
 
 

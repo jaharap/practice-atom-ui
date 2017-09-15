@@ -164,4 +164,25 @@ ApiService {
 
     }
 
+    deleteUsers(userId:number):Promise<any>{
+
+        return new Promise((resolve, reject)=>{
+
+            var url = this.apiUrl + "/users/" + userId;
+            var headers = new Headers({ Authorization: "Token " + this.myToken});
+            var options = new RequestOptions({headers: headers});
+
+            this.http.delete(url, options)
+                .toPromise()
+                .then(response => {
+                    console.log("In api service delete Users");
+                    resolve();
+                })
+                .catch(error=>{
+                   reject();
+                });
+
+        });
+    }
+
 }

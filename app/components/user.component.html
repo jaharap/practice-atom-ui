@@ -16,7 +16,7 @@
             <td>Email </td>
             <td>Role</td>
         </tr>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users; let i=index">
             <td>{{user.username}}</td>
             <td>{{user.email}}</td>
             <td>{{user.role}}</td>
@@ -39,13 +39,14 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">X</button>
                     <h4>Delete user</h4>
-                    <div class="modal-body" *ngIf="userToDelete">
-                        <form action="">
+                    <div class="modal-body">
+                        <form action="" *ngIf="userToDelete">
                             <h4>Are you sure you want to delete user <span>{{userToDelete.username}}</span> ({{userToDelete.email}})</h4>
                             <div>
-                                <button class="btn btn-danger">yes</button>
-                                <button class="btn btn-primary">Cancel</button>
+                                <button class="btn btn-danger" *ngIf="showDeleteButton" (click)="onDeleteConfirm()">yes</button>
+                                <button class="btn btn-primary" data-dismiss="modal">Cancel</button>
                             </div>
+                            <div class="modal-message">{{deleteModalMessage}}</div>
                         </form>
                     </div>
                 </div>
